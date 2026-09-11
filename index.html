@@ -4,53 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dosa Doneness Detector (DDD 3000)</title>
-  <style>
-    :root {
-      --bg: #0d1117;
-      --card: #161b22;
-      --accent: #ff7b00;
-      --text: #f0f6fc;
-      --muted: #8b949e;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
-    body {
-      background: var(--bg); color: var(--text); display: flex;
-      flex-direction: column; align-items: center; min-height: 100vh; padding: 24px;
-    }
-    h1 { font-size: 2rem; color: var(--accent); margin-bottom: 6px; }
-    p.sub { color: var(--muted); margin-bottom: 24px; font-size: 0.95rem; }
-    .container {
-      display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; max-width: 1000px; width: 100%;
-    }
-    .panel {
-      background: var(--card); border: 1px solid #30363d; border-radius: 12px;
-      padding: 20px; display: flex; flex-direction: column; align-items: center;
-    }
-    .image-preview-container {
-      width: 320px; height: 320px; border-radius: 8px; overflow: hidden;
-      border: 2px dashed var(--accent); background: #000; display: flex;
-      align-items: center; justify-content: center; position: relative; margin-bottom: 15px;
-    }
-    #preview-image { max-width: 100%; max-height: 100%; display: none; object-fit: cover; }
-    .status-panel { flex: 1; min-width: 300px; }
-    .badge {
-      display: inline-block; padding: 4px 12px; border-radius: 99px;
-      background: #21262d; font-size: 0.85rem; margin-bottom: 12px;
-    }
-    .roast-box {
-      width: 100%; min-height: 80px; background: #090d13; border-left: 4px solid var(--accent);
-      border-radius: 4px; padding: 14px; margin: 16px 0; font-style: italic; font-size: 1.1rem;
-    }
-    .meter-container { width: 100%; margin-top: 10px; }
-    .label-row { display: flex; justify-content: space-between; margin-bottom: 4px; font-size: 0.85rem; }
-    .progress-bg { background: #21262d; height: 10px; border-radius: 5px; overflow: hidden; margin-bottom: 12px; }
-    .progress-fill { background: var(--accent); height: 100%; width: 0%; transition: width 0.3s ease; }
-    button, input[type="file"]::file-selector-button {
-      background: var(--accent); color: #000; border: none; font-weight: bold;
-      padding: 10px 24px; border-radius: 6px; cursor: pointer; font-size: 1rem;
-    }
-    input[type="file"] { color: var(--text); margin-top: 10px; }
-  </style>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
@@ -72,7 +26,7 @@
     <div class="panel status-panel">
       <span class="badge" id="system-status">System: Offline</span>
       <h2 id="current-state" style="color: var(--accent);">Awaiting Data...</h2>
-      
+
       <div class="roast-box" id="roast-text">
         "Initialize the AI and upload an image so I can tell you how bad you are at cooking."
       </div>
@@ -84,161 +38,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 
-  <script>
-    // PASTE YOUR MODEL LINK HERE (Must end with a trailing slash "/")
-    const URL = "https://teachablemachine.withgoogle.com/models/BUbcx2q2K/";
-
-    // A deck of roasts for each state (make sure keys match your Teachable Machine class names!)
-const ROASTS = {
-  "dosa batter": [
-    "This is warm fermented puddle water. Step away from the spatula.",
-    "Did you just spill milk on a black plate and call it cooking?",
-    "Patience is a virtue, but this hasn't even met heat yet.",
-    "If you try to eat this now, your stomach will file a formal complaint."
-  ],
-  "uncooked dosa": [
-    "Disappointment on a pan. Looks as pale as a ghost.",
-    "This has the structural integrity of wet tissue paper.",
-    "My sensors detect zero Maillard reaction. Turn up the stove, coward.",
-    "Your ancestors are weeping at this rubbery disaster.",
-    "It's cooked on one side and crying on the other."
-  ],
-  "golden dosa": [
-    "Peak South Indian engineering. Certified edible.",
-    "The golden hour has arrived. Grab the coconut chutney immediately.",
-    "Crisp on the outside, soft on the inside. You might actually survive today.",
-    "Gordon Ramsay would stay silent. That is a masterpiece.",
-    "Mouth-watering perfection. Quick, eat it before it gets soggy!"
-  ],
-  "Burnt dosa": [
-    "Congratulations, you have invented edible charcoal.",
-    "Crunch level: tooth-shattering. Smoke alarm level: active.",
-    "You were supposed to cook it, not cremate it.",
-    "NASA wants their carbon heat shield tile back.",
-    "Are you trying to exfoliate your throat with that sandpaper?"
-  ],
-  "non dosa": [
-    "That is not a dosa. If you put that on a tava, you are going to jail.",
-    "My optical sensors are deeply offended. That is definitely not food.",
-    "Error 404: Dosa not found. Please do not cook that living creature or object.",
-    "Did you seriously try to feed me a photo of that?"
-  ]
-};
-
-// Helper function to pick a random roast from the array
-function getRandomRoast(category) {
-  const options = ROASTS[category];
-  if (!options || options.length === 0) {
-    return "Culinary chaos detected. I have no words for this.";
-  }
-  const randomIndex = Math.floor(Math.random() * options.length);
-  return options[randomIndex];
-}
-
-    let model, maxPredictions;
-
-    async function initModel() {
-      document.getElementById("start-btn").innerText = "Loading AI...";
-      
-      const modelURL = URL + "model.json";
-      const metadataURL = URL + "metadata.json";
-
-      try {
-        model = await tmImage.load(modelURL, metadataURL);
-        maxPredictions = model.getTotalClasses();
-        
-        document.getElementById("system-status").innerText = "AI Ready! Upload an image.";
-        document.getElementById("start-btn").style.display = "none";
-        
-        // Show the upload input now that AI is ready
-        document.getElementById("image-upload").style.display = "block";
-        setupMeters();
-      } catch (err) {
-        alert("Wait! Did you replace the URL variable with your Teachable Machine link?");
-        document.getElementById("start-btn").innerText = "Retry Loading";
-      }
-    }
-
-    function setupMeters() {
-      const meterContainer = document.getElementById("prediction-meters");
-      meterContainer.innerHTML = "";
-      for (let i = 0; i < maxPredictions; i++) {
-        const className = model.getClassLabels()[i];
-        meterContainer.innerHTML += `
-          <div class="label-row">
-            <span>${className}</span>
-            <span id="pct-${i}">0%</span>
-          </div>
-          <div class="progress-bg"><div class="progress-fill" id="bar-${i}"></div></div>
-        `;
-      }
-    }
-
-    // Handle Image Upload
-    const imageUpload = document.getElementById('image-upload');
-    const previewImage = document.getElementById('preview-image');
-    const placeholder = document.getElementById('placeholder-text');
-
-    imageUpload.addEventListener('change', (event) => {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          previewImage.src = e.target.result;
-          previewImage.style.display = 'block';
-          placeholder.style.display = 'none';
-          
-          // Wait for the image to render before predicting
-          previewImage.onload = () => {
-            if (model) predictImage();
-          }
-        };
-        reader.readAsDataURL(file);
-      }
-    });
-
-    async function predictImage() {
-      const prediction = await model.predict(previewImage);
-      let highestProb = 0;
-      let winningClass = "";
-
-      for (let i = 0; i < maxPredictions; i++) {
-        const prob = prediction[i].probability;
-        const pct = Math.round(prob * 100);
-        
-        document.getElementById(`bar-${i}`).style.width = pct + "%";
-        document.getElementById(`pct-${i}`).innerText = pct + "%";
-
-        if (prob > highestProb) {
-          highestProb = prob;
-          winningClass = prediction[i].className;
-        }
-      }
-
-      // If confidence is lower than 75%, reject as impostor
-      if (highestProb < 0.75) {
-        document.getElementById("current-state").innerText = "Identity Crisis";
-        const impostorRoast = getRandomRoast("non dosa");
-        document.getElementById("roast-text").innerText = `"${impostorRoast}"`;
-        speakRoast(impostorRoast);
-        return;
-      }
-
-      // Pick a random roast from the winning category
-      document.getElementById("current-state").innerText = winningClass;
-      const commentary = getRandomRoast(winningClass);
-      document.getElementById("roast-text").innerText = `"${commentary}"`;
-      speakRoast(commentary);
-    }
-
-    function speakRoast(text) {
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.rate = 1.0;
-        window.speechSynthesis.speak(utterance);
-      }
-    }
-  </script>
+  <script src="js/roasts.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>

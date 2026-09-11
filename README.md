@@ -24,15 +24,10 @@ An image classification model trained on dosas in every stage of triumph and dis
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
-
-For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
+- [Languages used] HTML, CSS, JavaScript
+- [Frameworks used] None — proudly vanilla JS
+- [Libraries used] TensorFlow.js, Teachable Machine Image Library (@teachablemachine/image), Web Speech API, Web Audio API
+- [Tools used] Google Teachable Machine, VS Code, GitHub
 
 ### Implementation
 For Software:

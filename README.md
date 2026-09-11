@@ -2,7 +2,7 @@
 
 
 
-# [Project Name] 🎯
+# Dosa Doneness Detector 🎯
 
 
 ## Basic Details

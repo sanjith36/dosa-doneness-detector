@@ -2,7 +2,7 @@
 
 
 
-# Dosa Doneness Detector 🎯
+# Dosa Doneness Detector
 
 
 ## Basic Details
@@ -13,13 +13,13 @@
 - SANJITH S -TKMCE
 
 ### Project Description
-[2-3 lines about what your project does]
+DDD (Dosa Doneness Detector) is an AI-powered web app that stares at a photo of your dosa and judges you for it. Powered by a custom-trained vision model, it classifies your dosa as batter, uncooked, golden, or burnt — then roasts you accordingly, out loud.
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+Nobody has ever stood over a stove wondering "is my dosa objectively good enough?" and needed a machine learning model to confirm it. DDD solves this problem that has never once occurred to a single human being, with full confidence and zero hesitation.
 
 ### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+An image classification model trained on dosas in every stage of triumph and disaster, wrapped in a dramatic "AI thinking really hard" stalling sequence, screen shakes for culinary crimes, confetti bursts for perfection, sound stings for every verdict, and a permanently-stuck Uselessness Meter proudly fixed at 100%.
 
 ## Technical Details
 ### Technologies/Components Used

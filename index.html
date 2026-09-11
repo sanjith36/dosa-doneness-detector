@@ -8,6 +8,85 @@
 </head>
 <body>
 
+  <div class="bg-scene" aria-hidden="true">
+    <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#ff7b00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+
+      <!-- Chef stirring batter, top-left corner -->
+      <g class="doodle" transform="translate(70,60)">
+        <circle cx="70" cy="55" r="34" />                              <!-- head -->
+        <circle cx="58" cy="52" r="3" fill="#ff7b00" stroke="none" />   <!-- eye -->
+        <circle cx="82" cy="52" r="3" fill="#ff7b00" stroke="none" />   <!-- eye -->
+        <path d="M58 68 Q70 76 82 68" />                                <!-- smile -->
+        <path d="M36 40 Q70 4 104 40 Q104 20 70 16 Q36 20 36 40 Z" />   <!-- chef hat -->
+        <path d="M70 89 L70 150" />                                    <!-- neck to body -->
+        <path d="M30 150 Q70 118 110 150 L104 210 Q70 226 36 210 Z" /> <!-- body/apron -->
+        <path d="M30 150 Q6 168 14 196" />                              <!-- left arm -->
+        <path d="M110 150 Q140 162 150 140" />                          <!-- right arm to ladle -->
+        <ellipse cx="150" cy="130" rx="8" ry="14" transform="rotate(30 150 130)" /> <!-- ladle head -->
+        <ellipse cx="30" cy="235" rx="54" ry="20" />                    <!-- mixing bowl -->
+        <path d="M-6 232 Q30 250 66 232" />                             <!-- batter swirl -->
+      </g>
+
+      <!-- Pan with dosa + steam, bottom-right corner -->
+      <g class="doodle" transform="translate(1170,560)">
+        <ellipse cx="180" cy="140" rx="150" ry="34" />                  <!-- tawa/pan rim -->
+        <path d="M40 140 Q180 172 320 140" />                          <!-- pan base curve -->
+        <path d="M60 174 L30 220 M300 174 L330 220" />                 <!-- pan stand legs -->
+        <ellipse cx="180" cy="128" rx="98" ry="20" />                  <!-- dosa on pan -->
+        <path d="M110 128 Q180 140 250 128" opacity="0.6" />           <!-- dosa crisp line -->
+        <g class="steam">
+          <path d="M120 90 Q108 60 122 40 Q136 20 120 -4" />
+          <path d="M180 90 Q168 55 182 32 Q196 8 180 -24" />
+          <path d="M240 90 Q228 60 242 40 Q256 20 240 -4" />
+        </g>
+        <path d="M0 216 Q20 200 40 216 M320 216 Q340 200 360 216" opacity="0.5" /> <!-- flame flicks -->
+      </g>
+
+      <!-- Coconut halves -->
+      <g class="doodle" transform="translate(760,80)">
+        <circle cx="0" cy="0" r="26" />
+        <path d="M-26 0 A26 26 0 0 0 26 0" opacity="0.5" />
+        <path d="M-14 -6 Q0 4 14 -6 M-12 6 Q0 14 12 6" opacity="0.4" />
+      </g>
+
+      <!-- Curry leaves sprig -->
+      <g class="doodle" transform="translate(880,220)">
+        <path d="M0 40 Q4 20 0 0" />
+        <ellipse cx="-10" cy="8" rx="9" ry="5" transform="rotate(-30 -10 8)" />
+        <ellipse cx="10" cy="8" rx="9" ry="5" transform="rotate(30 10 8)" />
+        <ellipse cx="-11" cy="24" rx="9" ry="5" transform="rotate(-30 -11 24)" />
+        <ellipse cx="11" cy="24" rx="9" ry="5" transform="rotate(30 11 24)" />
+        <ellipse cx="0" cy="-4" rx="8" ry="5" />
+      </g>
+
+      <!-- Chili -->
+      <g class="doodle" transform="translate(200,700)">
+        <path d="M0 0 Q6 -14 0 -24" />
+        <path d="M0 0 Q40 10 46 46 Q50 74 30 78 Q10 80 4 54 Q0 30 0 0 Z" />
+      </g>
+
+      <!-- Idli on banana leaf -->
+      <g class="doodle" transform="translate(1000,760)">
+        <ellipse cx="0" cy="10" rx="70" ry="24" />                     <!-- leaf -->
+        <circle cx="-22" cy="0" r="18" />
+        <circle cx="14" cy="-4" r="18" />
+        <circle cx="46" cy="2" r="18" />
+      </g>
+
+      <!-- Floating steam puffs scattered around -->
+      <g class="steam" transform="translate(520,500)">
+        <path d="M0 40 Q-10 20 0 4 Q10 -12 0 -30" />
+      </g>
+      <g class="steam" transform="translate(1330,260)">
+        <path d="M0 40 Q-10 20 0 4 Q10 -12 0 -30" />
+      </g>
+      <g class="steam" transform="translate(430,150)">
+        <path d="M0 30 Q-8 14 0 2 Q8 -10 0 -22" />
+      </g>
+    </svg>
+  </div>
+
+
   <h1>Dosa Doneness Detector (DDD)</h1>
   <p class="sub">Upload evidence of your culinary skills for immediate judgment.</p>
 
@@ -31,9 +110,19 @@
         "Initialize the AI and upload an image so I can tell you how bad you are at cooking."
       </div>
 
-      <div class="meter-container" id="prediction-meters"></div>
+      <div class="uselessness-meter">
+        <div class="uselessness-label">
+          <span>Practical Usefulness of This App</span>
+          <span>100% Useless</span>
+        </div>
+        <div class="uselessness-bg">
+          <div class="uselessness-fill"></div>
+        </div>
+      </div>
     </div>
   </div>
+
+  <div id="confetti-layer"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>

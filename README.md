@@ -30,12 +30,22 @@ For Software:
 - [Tools used] Google Teachable Machine, VS Code, GitHub
 
 ### Implementation
-For Software:
+For Software: Built entirely with HTML, CSS, and vanilla JavaScript. The AI model runs client-side using TensorFlow.js and Google's Teachable Machine Image library, loaded directly via CDN — no backend, no build step, no npm install required.
+
 # Installation
 [commands]
+git clone https://github.com/sanjith36/dosa-doneness-detector.git
+cd dosa-doneness-detector
 
 # Run
-[commands]
+# Just open it directly
+open index.html          # macOS
+start index.html         # Windows
+xdg-open index.html      # Linux
+
+# OR serve it locally (recommended, avoids browser file:// restrictions)
+python3 -m http.server 8000
+# then visit http://localhost:8000 in your browser
 
 ### Project Documentation
 For Software:
@@ -44,17 +54,22 @@ For Software:
 <img width="1535" height="721" alt="scr1" src="https://github.com/user-attachments/assets/5286a1ec-6c0e-4334-ab0f-bce3af76f0ca" />
 This the UI of the DDD
 
+
 <img width="1530" height="734" alt="scr2" src="https://github.com/user-attachments/assets/8c163de4-fb8a-45b2-a06f-9094718f8a61" />
 When we add a perfect dosa it will analyze it and comment it.
+
 
 <img width="1535" height="726" alt="scr3" src="https://github.com/user-attachments/assets/c0745d8a-e521-4697-baf0-042272d16b8a" />
 the analyzer will categorizes the dosa into perfect/burnt/uncooked/batter/non dosa
 
+
 <img width="1534" height="727" alt="scr4" src="https://github.com/user-attachments/assets/57b30b9b-ab60-4030-b58b-eb67da3ec671" />
 the analyzer will categorizes the dosa into perfect/burnt/uncooked/batter/non dosa
 
+
 <img width="1535" height="726" alt="scr5" src="https://github.com/user-attachments/assets/8d67bb7d-1d42-4501-82b2-f3d6b2036bcb" />
 the analyzer will categorizes the dosa into perfect/burnt/uncooked/batter/non dosa
+
 
 <img width="1534" height="730" alt="scr6" src="https://github.com/user-attachments/assets/8ef072b9-d650-4baa-88cc-71a57810081f" />
 the analyzer will categorizes the dosa into perfect/burnt/uncooked/batter/non dosa
@@ -68,11 +83,9 @@ The full journey from dosa photo to public humiliation
 
 ### Project Demo
 # Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
+[DDD](https://drive.google.com/file/d/1K017oG0eXAPRohkgwvk12U7vh8KrAQdS/view?usp=sharing)
+The video represents how the web app responds to different images based on categorization
 
-# Additional Demos
-[Add any extra demo materials/links]
 
 ## Team Contributions
 - [Name 1]: [Specific contributions]

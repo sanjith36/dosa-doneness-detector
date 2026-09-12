@@ -35,6 +35,7 @@ For Software: Built entirely with HTML, CSS, and vanilla JavaScript. The AI mode
 # Installation
 [commands]
 git clone https://github.com/sanjith36/dosa-doneness-detector.git
+
 cd dosa-doneness-detector
 
 # Run
@@ -45,9 +46,9 @@ start index.html         # Windows
 
 xdg-open index.html      # Linux
 
-# OR serve it locally (recommended, avoids browser file:// restrictions)
+## OR serve it locally (recommended, avoids browser file:// restrictions)
 python3 -m http.server 8000
-# then visit http://localhost:8000 in your browser
+## then visit http://localhost:8000 in your browser
 
 ### Project Documentation
 For Software:
@@ -91,8 +92,7 @@ The video represents how the web app responds to different images based on categ
 
 ## Team Contributions
 - [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 

@@ -33,23 +33,26 @@ For Software:
 For Software: Built entirely with HTML, CSS, and vanilla JavaScript. The AI model runs client-side using TensorFlow.js and Google's Teachable Machine Image library, loaded directly via CDN — no backend, no build step, no npm install required.
 
 # Installation
+```bash
 [commands]
 git clone https://github.com/sanjith36/dosa-doneness-detector.git
 
 cd dosa-doneness-detector
-
+```
 # Run
 ## Just open it directly
+```bash
 open index.html          # macOS
 
 start index.html         # Windows
 
 xdg-open index.html      # Linux
-
+```
 ## OR serve it locally (recommended, avoids browser file:// restrictions)
+```bash
 python3 -m http.server 8000
 ## then visit http://localhost:8000 in your browser
-
+```
 ### Project Documentation
 For Software:
 

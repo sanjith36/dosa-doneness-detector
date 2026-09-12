@@ -38,9 +38,11 @@ git clone https://github.com/sanjith36/dosa-doneness-detector.git
 cd dosa-doneness-detector
 
 # Run
-# Just open it directly
+## Just open it directly
 open index.html          # macOS
+
 start index.html         # Windows
+
 xdg-open index.html      # Linux
 
 # OR serve it locally (recommended, avoids browser file:// restrictions)

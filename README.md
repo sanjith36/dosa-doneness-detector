@@ -91,7 +91,7 @@ The video represents how the web app responds to different images based on categ
 
 
 ## Team Contributions
-- [Name 1]: [Specific contributions]
+- Built solely by me -Sanjith S, assisted by Claude
 
 
 ---

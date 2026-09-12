@@ -108,6 +108,7 @@ The video shows how the web app responds to different images based on categoriza
 
 ## Team Contributions
 - **Sanjith S**: End-to-end build — trained the Teachable Machine vision model, developed the full frontend (HTML/CSS/JS), implemented the roast/audio/visual effects, and handled deployment.
+- Built by Sanjith S, with AI assistance from Claude.
 
 ---
 Made with ❤️ at TinkerHub Useless Projects

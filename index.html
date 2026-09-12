@@ -21,14 +21,16 @@
         <path d="M70 89 L70 150" />                                    <!-- neck to body -->
         <path d="M30 150 Q70 118 110 150 L104 210 Q70 226 36 210 Z" /> <!-- body/apron -->
         <path d="M30 150 Q6 168 14 196" />                              <!-- left arm -->
-        <path d="M110 150 Q140 162 150 140" />                          <!-- right arm to ladle -->
-        <ellipse cx="150" cy="130" rx="8" ry="14" transform="rotate(30 150 130)" /> <!-- ladle head -->
+        <g class="stir-arm">
+          <path d="M110 150 Q140 162 150 140" />                          <!-- right arm to ladle -->
+          <ellipse cx="150" cy="130" rx="8" ry="14" transform="rotate(30 150 130)" /> <!-- ladle head -->
+        </g>
         <ellipse cx="30" cy="235" rx="54" ry="20" />                    <!-- mixing bowl -->
         <path d="M-6 232 Q30 250 66 232" />                             <!-- batter swirl -->
       </g>
 
       <!-- Pan with dosa + steam, bottom-right corner -->
-      <g class="doodle" transform="translate(1170,560)">
+      <g class="doodle pan-sway" transform="translate(1170,560)">
         <ellipse cx="180" cy="140" rx="150" ry="34" />                  <!-- tawa/pan rim -->
         <path d="M40 140 Q180 172 320 140" />                          <!-- pan base curve -->
         <path d="M60 174 L30 220 M300 174 L330 220" />                 <!-- pan stand legs -->
@@ -44,9 +46,11 @@
 
       <!-- Coconut halves -->
       <g class="doodle" transform="translate(760,80)">
-        <circle cx="0" cy="0" r="26" />
-        <path d="M-26 0 A26 26 0 0 0 26 0" opacity="0.5" />
-        <path d="M-14 -6 Q0 4 14 -6 M-12 6 Q0 14 12 6" opacity="0.4" />
+        <g class="wobble">
+          <circle cx="0" cy="0" r="26" />
+          <path d="M-26 0 A26 26 0 0 0 26 0" opacity="0.5" />
+          <path d="M-14 -6 Q0 4 14 -6 M-12 6 Q0 14 12 6" opacity="0.4" />
+        </g>
       </g>
 
       <!-- Curry leaves sprig -->
@@ -61,8 +65,10 @@
 
       <!-- Chili -->
       <g class="doodle" transform="translate(200,700)">
-        <path d="M0 0 Q6 -14 0 -24" />
-        <path d="M0 0 Q40 10 46 46 Q50 74 30 78 Q10 80 4 54 Q0 30 0 0 Z" />
+        <g class="wobble">
+          <path d="M0 0 Q6 -14 0 -24" />
+          <path d="M0 0 Q40 10 46 46 Q50 74 30 78 Q10 80 4 54 Q0 30 0 0 Z" />
+        </g>
       </g>
 
       <!-- Idli on banana leaf -->
@@ -87,7 +93,7 @@
   </div>
 
 
-  <h1>Dosa Doneness Detector (DDD)</h1>
+  <h1>Know ur dosa's roast 🔥</h1>
   <p class="sub">Upload evidence of your culinary skills for immediate judgment.</p>
 
   <div class="container">

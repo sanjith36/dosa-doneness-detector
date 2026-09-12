@@ -40,15 +40,26 @@ For Software:
 ### Project Documentation
 For Software:
 
-# Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+# Screenshots 
+<img width="1535" height="721" alt="scr1" src="https://github.com/user-attachments/assets/5286a1ec-6c0e-4334-ab0f-bce3af76f0ca" />
+This the UI of the DDD
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+<img width="1530" height="734" alt="scr2" src="https://github.com/user-attachments/assets/8c163de4-fb8a-45b2-a06f-9094718f8a61" />
+When we add a perfect dosa it will analyze it and comment it.
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+<img width="1535" height="726" alt="scr3" src="https://github.com/user-attachments/assets/c0745d8a-e521-4697-baf0-042272d16b8a" />
+the analyzer is categorizes the dosa into perfect/burnt/uncooked/batter/non dosa
+
+<img width="1534" height="727" alt="scr4" src="https://github.com/user-attachments/assets/57b30b9b-ab60-4030-b58b-eb67da3ec671" />
+the analyzer is categorizes the dosa into perfect/burnt/uncooked/batter/non dosa
+
+<img width="1535" height="726" alt="scr5" src="https://github.com/user-attachments/assets/8d67bb7d-1d42-4501-82b2-f3d6b2036bcb" />
+the analyzer is categorizes the dosa into perfect/burnt/uncooked/batter/non dosa
+
+<img width="1534" height="730" alt="scr6" src="https://github.com/user-attachments/assets/8ef072b9-d650-4baa-88cc-71a57810081f" />
+the analyzer is categorizes the dosa into perfect/burnt/uncooked/batter/non dosa
+
+
 
 # Diagrams
 ![Workflow](Add your workflow/architecture diagram here)
